@@ -1,0 +1,21 @@
+{% extends 'aplicacion/home.html' %}
+
+
+{% block contenido %}
+<h1 class="mb-5 text-center">Login</h1>
+ 
+<form class=" d-flex justify-content-center my-4 " action="" method="post">
+    {% csrf_token %}
+    <table class="mx-5" >
+        {{ form.as_table }}
+    </table>
+    
+    <input type="submit" class="btn btn-success" value="Enviar">
+</form>
+
+  
+
+
+    
+{% endblock contenido %}
+

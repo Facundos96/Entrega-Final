@@ -1,0 +1,51 @@
+{% extends 'aplicacion/home.html' %}
+
+
+{% block contenido %}
+     <h1 class=" d-flex justify-content-center"> Lista de hardware disponible</h1>
+
+     <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre de hardware</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+    {% for h in hardware  %}
+            <tr>
+                <td>{{ h.id }}</td>
+                <td>{{ h.nombre }}</td>
+                <td>{{ h.tipo }}</td>
+                <td>{{ h.precio }}</td>
+                <td>
+                    <a
+                      href="{% url 'hardwareActualizar' h.id %}"
+                      class="btn btn-primary"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                    </a>
+                    <a
+                      href="{% url 'hardwareBorrar' h.id %}"
+                      class="btn btn-danger"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                    </a>                
+                  </td>
+
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center ">
+                <a class="mt-2 mb-5 btn btn-primary btn-lg " href="{% url 'hardwareForm'%}">Agregrar nuevo hardware</a>
+    </div>
+    
+{% endblock contenido %}
+
+

@@ -1,0 +1,54 @@
+{% extends 'aplicacion/home.html' %}
+
+
+{% block contenido %}
+     <h1 class=" d-flex justify-content-center"> Lista de proyectos activos</h1>
+
+     <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre del proyecto</th>
+                <th>Lenguaje</th>
+                <th>Horas</th>
+                <th>Estado</th>
+                <th>descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+    {% for p in proyectos %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.nombre }}</td>
+                <td>{{ p.lenguaje }}</td>
+                <td>{{ p.horas }}</td>
+                <td>{{ p.estado }}</td>
+                <td>{{ p.descripcion }}</td>
+                <td>
+                    <a
+                      href="{% url 'proyectosActualizar' p.id %}"
+                      class="btn btn-primary"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                    </a>
+                    <a
+                      href="{% url 'proyectosBorrar' p.id %}"
+                      class="btn btn-danger"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                    </a>                
+                  </td>
+
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center ">
+                <a class="mt-2 mb-5 btn btn-primary btn-lg " href="{% url 'proyectosForm'%}">Agregrar nuevo proyecto</a>
+    </div>
+    
+{% endblock contenido %}
+

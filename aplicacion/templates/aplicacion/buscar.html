@@ -1,0 +1,31 @@
+{% extends 'aplicacion/home.html' %}
+
+
+    
+
+{% block contenido %}
+
+<h2>Buscar hardware</h2>
+<form action="{% url 'buscarHardware' %}" method="get">
+    {% csrf_token %}
+
+    <p>nombre a buscar: <input type="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Buscar">
+</form>
+
+<h2>Buscar proyectos</h2>
+<form action="{% url 'buscarProyecto' %}" method="get">
+    {% csrf_token %}
+
+    <p>nombre a buscar: <input type="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Buscar">
+</form>
+
+<h2>Buscar Servicio tecnico</h2>
+<form action="{% url 'buscarServiciotecnico' %}" method="get">
+    {% csrf_token %}
+
+    <p>nombre a buscar: <input type="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Buscar">
+</form>
+{% endblock contenido %}
